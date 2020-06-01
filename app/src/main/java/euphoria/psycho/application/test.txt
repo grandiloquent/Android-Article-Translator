@@ -1,0 +1,4 @@
+
+fileServer := http.FileServer(http.Dir("static")): Here, we created a file server using the FileServer handler of the net/http package, which serves HTTP requests from the static directory present on the filesystem.
+http.Handle("/static/", http.StripPrefix("/static/", fileServer)): Here, we are registering the http.StripPrefix("/static/", fileServer) handler with the /static URL pattern using HandleFunc of the net/http package, which means  http.StripPrefix("/static/", fileServer) gets executed and passes (http.ResponseWriter, *http.Request) as a parameter to it whenever we access the HTTP URL with the /static pattern.
+http.StripPrefix("/static/", fileServer): This returns a handler that serves HTTP requests by removing /static from the request URL's path and invokes the file server. StripPrefix handles a request for a path that doesn't begin with a prefix by replying with an HTTP 404.

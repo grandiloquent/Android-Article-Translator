@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/format_title"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_title" />
+
+
+            <ImageButton
+                android:id="@+id/format_code"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_code" />
+
+
+            <ImageButton
+                android:id="@+id/format_break_line"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_format_line_spacing" />
+
+            <ImageButton
+                android:id="@+id/format_remove_line"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_remove" />
+
+            <ImageButton
+                android:id="@+id/format_cut"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_content_cut" />
+
+            <ImageButton
+                android:id="@+id/translate_baidu"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_translate" />
+
+            <ImageButton
+                android:id="@+id/translate_youdao"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_translate" />
+
+            <ImageButton
+                android:id="@+id/translate_google"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_g_translate" />
+
+            <ImageButton
+                android:id="@+id/format"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_format_align_justify" />
+
+            <ImageButton
+                android:id="@+id/subtitle"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_text_fields" />
+
+            <ImageButton
+                android:id="@+id/format_list"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_format_list_bulleted" />
+
+            <ImageButton
+                android:id="@+id/format_image"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_image" />
+
+            <ImageButton
+                android:id="@+id/format_bold"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_format_bold" />
+
+            <ImageButton
+                android:id="@+id/format_search"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_search" />
+
+            <ImageButton
+                android:id="@+id/format_code_split"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_code" />
+
+            <ImageButton
+                android:id="@+id/format_link"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_insert_link" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/strings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <EditText
+        android:id="@+id/edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="start" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="280dp" />
+
+</LinearLayout>
