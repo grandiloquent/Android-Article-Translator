@@ -4,6 +4,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
+    <EditText
+        android:id="@+id/edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="start"
+        android:inputType="textMultiLine|textNoSuggestions" />
+
+
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -14,26 +24,10 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/format_title"
+                android:id="@+id/translate_youdao"
                 style="@style/MenuButton"
-                android:src="@drawable/ic_action_title" />
+                android:src="@drawable/ic_action_translate" />
 
-
-            <ImageButton
-                android:id="@+id/format_code"
-                style="@style/MenuButton"
-                android:src="@drawable/ic_action_code" />
-
-
-            <ImageButton
-                android:id="@+id/format_break_line"
-                style="@style/MenuButton"
-                android:src="@drawable/ic_action_format_line_spacing" />
-
-            <ImageButton
-                android:id="@+id/format_remove_line"
-                style="@style/MenuButton"
-                android:src="@drawable/ic_action_remove" />
 
             <ImageButton
                 android:id="@+id/format_cut"
@@ -41,24 +35,46 @@
                 android:src="@drawable/ic_action_content_cut" />
 
             <ImageButton
-                android:id="@+id/translate_baidu"
-                style="@style/MenuButton"
-                android:src="@drawable/ic_action_translate" />
-
-            <ImageButton
-                android:id="@+id/translate_youdao"
-                style="@style/MenuButton"
-                android:src="@drawable/ic_action_translate" />
-
-            <ImageButton
                 android:id="@+id/translate_google"
                 style="@style/MenuButton"
                 android:src="@drawable/ic_action_g_translate" />
 
             <ImageButton
+                android:id="@+id/format_remove_line"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_remove" />
+
+            <ImageButton
+                android:id="@+id/format_break_line"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_format_line_spacing" />
+
+
+            <ImageButton
+                android:id="@+id/translate_baidu"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_translate" />
+
+            <ImageButton
+                android:id="@+id/format_code"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_code" />
+
+            <ImageButton
+                android:id="@+id/format_title"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_title" />
+
+            <ImageButton
                 android:id="@+id/format"
                 style="@style/MenuButton"
                 android:src="@drawable/ic_action_format_align_justify" />
+
+
+            <ImageButton
+                android:id="@+id/format_code_split"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_code" />
 
             <ImageButton
                 android:id="@+id/subtitle"
@@ -86,16 +102,18 @@
                 android:src="@drawable/ic_action_search" />
 
             <ImageButton
-                android:id="@+id/format_code_split"
-                style="@style/MenuButton"
-                android:src="@drawable/ic_action_code" />
-
-            <ImageButton
                 android:id="@+id/format_link"
                 style="@style/MenuButton"
                 android:src="@drawable/ic_action_insert_link" />
+
+            <ImageButton
+                android:id="@+id/format_remove_before"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_remove" />
+
         </LinearLayout>
     </HorizontalScrollView>
+
 
     <HorizontalScrollView
         android:layout_width="match_parent"
@@ -111,15 +129,8 @@
         </LinearLayout>
     </HorizontalScrollView>
 
-    <EditText
-        android:id="@+id/edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="start" />
-
     <View
         android:layout_width="match_parent"
-        android:layout_height="280dp" />
+        android:layout_height="230dp" />
 
 </LinearLayout>

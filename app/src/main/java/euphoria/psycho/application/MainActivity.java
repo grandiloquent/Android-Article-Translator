@@ -47,6 +47,7 @@ public class MainActivity extends Activity {
     private View mFormatSearch;
     private View mFormatCodeSplit;
     private View mFormatLink;
+    private View mFormatRemoveBefore;
 
     private void initialize() {
 
@@ -89,7 +90,8 @@ public class MainActivity extends Activity {
         mTranslateGoogle.setOnClickListener(this::onTranslateGoogleClicked);
         mTranslateYoudao.setOnClickListener(this::onTranslateYoudaoClicked);
         mFormatCut.setOnClickListener(this::onFormatCutClicked);
-
+        mFormatRemoveBefore = findViewById(R.id.format_remove_before);
+        mFormatRemoveBefore.setOnClickListener(this::onFormatRemoveBeforeClicked);
         mEditText.setText(mPreferences.getString("content", null));
         mFormatBreakLine = findViewById(R.id.format_break_line);
         mFormatBreakLine.setOnClickListener(this::onFormatBreakLineClicked);
@@ -100,6 +102,16 @@ public class MainActivity extends Activity {
         }
 
     }
+
+    private void onFormatRemoveBeforeClicked(View view) {
+        String str = mEditText.getText().subSequence(0, mEditText.getSelectionStart()).toString();
+        Share.setClipboardText(this, str);
+        mEditText.setText(
+                mEditText.getText().subSequence(mEditText.getSelectionStart(), mEditText.getText().length())
+
+        );
+    }
+
 
     private void onFormatBoldClicked(View v) {
         mEditText.getText().replace(
@@ -170,6 +182,7 @@ public class MainActivity extends Activity {
     }
 
     private void onFormatLinkClicked(View v) {
+        Integer.parseInt("xxx");
         String s = Share.getSelectionText(mEditText).toString().trim();
         Share.replaceSelectionText(mEditText,
                 String.format("[%s](%s)", s, s));
@@ -178,6 +191,7 @@ public class MainActivity extends Activity {
     private void onFormatListClicked(View v) {
         Helper.formatList(mEditText);
     }
+
 
     private void onFormatRemoveLineClicked(View v) {
         CharSequence result = Helper.deleteLineStrict(mEditText);

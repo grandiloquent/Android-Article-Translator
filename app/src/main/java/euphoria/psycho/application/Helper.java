@@ -6,6 +6,7 @@ import android.widget.EditText;
 
 import java.security.SecureRandom;
 import java.util.Arrays;
+import java.util.regex.Pattern;
 
 public class Helper {
     // 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ
@@ -13,18 +14,23 @@ public class Helper {
     static SecureRandom rnd = new SecureRandom();
 
     public static void formatCode(EditText editText) {
-        String content = editText.getText().subSequence(
-                editText.getSelectionStart(),
-                editText.getSelectionEnd()).toString();
-
-        if (Share.isNullOrWhiteSpace(content)) {
-            content = Share.getClipboardText(editText.getContext());
-        }
-        editText.getText().replace(
-                editText.getSelectionStart(),
-                editText.getSelectionEnd(),
-                "`" + content + "`"
-        );
+//        String content = editText.getText().subSequence(
+//                editText.getSelectionStart(),
+//                editText.getSelectionEnd()).toString();
+//
+//        if (Share.isNullOrWhiteSpace(content)) {
+//            content = Share.getClipboardText(editText.getContext());
+//        }
+//        editText.getText().replace(
+//                editText.getSelectionStart(),
+//                editText.getSelectionEnd(),
+//                "`" + content + "`"
+//        );
+        selectLine(editText);
+        Share.replaceSelectionText(editText,
+                Share.getSelectionText(editText).toString()
+                        .replaceAll("[a-zA-Z0-9:.*=/ <>$_\\-,(){}!\"&+\\[\\]]{2,}",
+                                "`$0`"));
     }
 
     public static int getLineStart(EditText editText) {
@@ -172,14 +178,17 @@ public class Helper {
                     result = NativeUtils.baiduTranslate(q, true);
                     break;
                 case 1:
-                    result = NativeUtils.youdaoDictionary(q, true, true)
-                            .replace("(", "（")
-                            .replace(")", "）")
-                            .replace(";", "；")
-                            .replace(":", "：")
-                            .replace("-", "——")
-                            .replace("?", "？")
-                    ;
+                    result = NativeUtils.youdaoDictionary(q, true, true);
+                    if (result != null)
+                        result = result
+                                .replaceAll("图\\d+-\\d+", "下图中")
+                                .replace("(", "（")
+                                .replace(")", "）")
+                                .replace(";", "；")
+                                .replace(":", "：")
+                                .replace("-", "——")
+                                .replace("?", "？")
+                                ;
                     break;
                 case 2:
                     result = NativeUtils.googleTranslate(q, true);
@@ -187,6 +196,7 @@ public class Helper {
             }
             if (result == null) {
                 Share.message(editText.getContext(), "Translate is null");
+                return;
             }
 
 
@@ -202,7 +212,7 @@ public class Helper {
 
         final String q = selectLine(editText);
         if (Share.isNullOrWhiteSpace(q)) return;
-        String[] pieces = q.split("(?<!\\.)[.?!] *(?=[a-zA-Z0-9])");
+        String[] pieces = q.split("(?<!\\.)[.?] *(?=[a-zA-Z0-9])");
         editText.getText().replace(
                 editText.getSelectionStart(),
                 editText.getSelectionEnd(),
