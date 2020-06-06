@@ -182,7 +182,6 @@ public class MainActivity extends Activity {
     }
 
     private void onFormatLinkClicked(View v) {
-        Integer.parseInt("xxx");
         String s = Share.getSelectionText(mEditText).toString().trim();
         Share.replaceSelectionText(mEditText,
                 String.format("[%s](%s)", s, s));
