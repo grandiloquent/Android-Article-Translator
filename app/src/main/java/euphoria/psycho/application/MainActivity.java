@@ -28,6 +28,7 @@ import java.util.Set;
 public class MainActivity extends Activity {
     private static final String KEY_STRINGS = "strings";
     private static final int REQUEST_PERMISSIONS_CODE = 1 << 1;
+    private static List<String[]> mPatternStrings = new ArrayList<>();
     private View mFormatList;
     private View mFormatTitle;
     private EditText mEditText;
@@ -48,6 +49,28 @@ public class MainActivity extends Activity {
     private View mFormatCodeSplit;
     private View mFormatLink;
     private View mFormatRemoveBefore;
+
+    public static String formatString(String s) {
+
+        for (String[] strings : mPatternStrings) {
+            s = s.replaceAll(strings[0], strings[1]);
+        }
+        return s;
+    }
+
+    private static void loadPatterns() throws IOException {
+        File pf = new File(Environment.getExternalStorageDirectory(),
+                "patterns.txt");
+        if (!pf.isFile()) {
+            Share.writeAllText(pf, "");
+            return;
+        }
+        String[] pieces = Share.readAllText(pf).split("\n");
+        for (int i = 0, j = pieces.length; i < j; i += 2) {
+            if (i + 1 < j)
+                mPatternStrings.add(new String[]{pieces[i], pieces[i + 1]});
+        }
+    }
 
     private void initialize() {
         try {
@@ -106,16 +129,6 @@ public class MainActivity extends Activity {
         }
 
     }
-
-    private void onFormatRemoveBeforeClicked(View view) {
-        String str = mEditText.getText().subSequence(0, mEditText.getSelectionStart()).toString();
-        Share.setClipboardText(this, str);
-        mEditText.setText(
-                mEditText.getText().subSequence(mEditText.getSelectionStart(), mEditText.getText().length())
-
-        );
-    }
-
 
     private void onFormatBoldClicked(View v) {
         mEditText.getText().replace(
@@ -195,6 +208,14 @@ public class MainActivity extends Activity {
         Helper.formatList(mEditText);
     }
 
+    private void onFormatRemoveBeforeClicked(View view) {
+        String str = mEditText.getText().subSequence(0, mEditText.getSelectionStart()).toString();
+        Share.setClipboardText(this, str);
+        mEditText.setText(
+                mEditText.getText().subSequence(mEditText.getSelectionStart(), mEditText.getText().length())
+
+        );
+    }
 
     private void onFormatRemoveLineClicked(View v) {
         CharSequence result = Helper.deleteLineStrict(mEditText);
@@ -297,30 +318,5 @@ public class MainActivity extends Activity {
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         initialize();
-    }
-
-
-    private static List<String[]> mPatternStrings;
-
-    private static void loadPatterns() throws IOException {
-        File pf = new File(Environment.getExternalStorageDirectory(),
-                "patterns.txt");
-        if (!pf.isFile()) {
-            Share.writeAllText(pf, "");
-            return;
-        }
-        String[] pieces = Share.readAllText(pf).split("\n");
-        for (int i = 0, j = pieces.length; i < j; i += 2) {
-            if (i + 1 < j)
-                mPatternStrings.add(new String[]{pieces[i], pieces[i + 1]});
-        }
-    }
-
-    public static String formatString(String s) {
-
-        for (String[] strings : mPatternStrings) {
-            s = s.replaceAll(strings[0], strings[1]);
-        }
-        return s;
     }
 }
