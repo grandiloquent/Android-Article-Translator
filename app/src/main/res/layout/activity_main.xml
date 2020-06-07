@@ -24,15 +24,15 @@
             android:orientation="horizontal">
 
             <ImageButton
+                android:id="@+id/format_cut"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_content_cut" />
+            <ImageButton
                 android:id="@+id/translate_youdao"
                 style="@style/MenuButton"
                 android:src="@drawable/ic_action_translate" />
 
 
-            <ImageButton
-                android:id="@+id/format_cut"
-                style="@style/MenuButton"
-                android:src="@drawable/ic_action_content_cut" />
 
             <ImageButton
                 android:id="@+id/translate_google"

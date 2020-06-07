@@ -50,7 +50,11 @@ public class MainActivity extends Activity {
     private View mFormatRemoveBefore;
 
     private void initialize() {
-
+        try {
+            loadPatterns();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         setContentView(R.layout.activity_main);
         mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mStrings = findViewById(R.id.strings);
@@ -293,5 +297,30 @@ public class MainActivity extends Activity {
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         initialize();
+    }
+
+
+    private static List<String[]> mPatternStrings;
+
+    private static void loadPatterns() throws IOException {
+        File pf = new File(Environment.getExternalStorageDirectory(),
+                "patterns.txt");
+        if (!pf.isFile()) {
+            Share.writeAllText(pf, "");
+            return;
+        }
+        String[] pieces = Share.readAllText(pf).split("\n");
+        for (int i = 0, j = pieces.length; i < j; i += 2) {
+            if (i + 1 < j)
+                mPatternStrings.add(new String[]{pieces[i], pieces[i + 1]});
+        }
+    }
+
+    public static String formatString(String s) {
+
+        for (String[] strings : mPatternStrings) {
+            s = s.replaceAll(strings[0], strings[1]);
+        }
+        return s;
     }
 }

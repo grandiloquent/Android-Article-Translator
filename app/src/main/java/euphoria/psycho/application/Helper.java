@@ -179,17 +179,6 @@ public class Helper {
                     break;
                 case 1:
                     result = NativeUtils.youdaoDictionary(q, true, true);
-                    if (result != null)
-                        result = result
-                                .replaceAll("图\\d+-\\d+", "下图中")
-                                .replace("(", "（")
-                                .replace(")", "）")
-                                .replace(";", "；")
-                                .replace(":", "：")
-                                .replace("-", "——")
-                                .replace("?", "？")
-                                ;
-                    break;
                 case 2:
                     result = NativeUtils.googleTranslate(q, true);
                     break;
@@ -199,8 +188,11 @@ public class Helper {
                 return;
             }
 
+            if (Share.isNullOrWhiteSpace(result)) {
 
-            String finalResult = result.replace("您", "你");
+                return;
+            }
+            String finalResult = MainActivity.formatString(result);
             ThreadUtils.postOnUiThread(() -> insertAfter(editText, "\n\n" +
                     finalResult
             ));
