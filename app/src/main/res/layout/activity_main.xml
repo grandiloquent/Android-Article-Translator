@@ -24,14 +24,9 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/format_cut"
-                style="@style/MenuButton"
-                android:src="@drawable/ic_action_content_cut" />
-            <ImageButton
-                android:id="@+id/translate_youdao"
+                android:id="@+id/translate_baidu"
                 style="@style/MenuButton"
                 android:src="@drawable/ic_action_translate" />
-
 
 
             <ImageButton
@@ -40,30 +35,16 @@
                 android:src="@drawable/ic_action_g_translate" />
 
             <ImageButton
-                android:id="@+id/format_remove_line"
-                style="@style/MenuButton"
-                android:src="@drawable/ic_action_remove" />
-
-            <ImageButton
-                android:id="@+id/format_break_line"
-                style="@style/MenuButton"
-                android:src="@drawable/ic_action_format_line_spacing" />
-
-
-            <ImageButton
-                android:id="@+id/translate_baidu"
+                android:id="@+id/translate_youdao"
                 style="@style/MenuButton"
                 android:src="@drawable/ic_action_translate" />
+
 
             <ImageButton
                 android:id="@+id/format_code"
                 style="@style/MenuButton"
                 android:src="@drawable/ic_action_code" />
 
-            <ImageButton
-                android:id="@+id/format_title"
-                style="@style/MenuButton"
-                android:src="@drawable/ic_action_title" />
 
             <ImageButton
                 android:id="@+id/format"
@@ -91,10 +72,6 @@
                 style="@style/MenuButton"
                 android:src="@drawable/ic_action_image" />
 
-            <ImageButton
-                android:id="@+id/format_bold"
-                style="@style/MenuButton"
-                android:src="@drawable/ic_action_format_bold" />
 
             <ImageButton
                 android:id="@+id/format_search"
@@ -106,14 +83,56 @@
                 style="@style/MenuButton"
                 android:src="@drawable/ic_action_insert_link" />
 
-            <ImageButton
-                android:id="@+id/format_remove_before"
-                style="@style/MenuButton"
-                android:src="@drawable/ic_action_remove" />
 
         </LinearLayout>
     </HorizontalScrollView>
 
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <ImageButton
+                android:id="@+id/format_cut"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_content_cut" />
+
+            <ImageButton
+                android:id="@+id/format_remove_line"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_remove" />
+
+            <ImageButton
+                android:id="@+id/format_break_line"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_format_line_spacing" />
+
+            <ImageButton
+                android:id="@+id/format_bold"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_format_bold" />
+
+            <ImageButton
+                android:id="@+id/format_title"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_title" />
+
+            <ImageButton
+                android:id="@+id/format_bold"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_format_bold" />
+
+            <ImageButton
+                android:id="@+id/format_remove_before"
+                style="@style/MenuButton"
+                android:src="@drawable/ic_action_remove" />
+        </LinearLayout>
+    </HorizontalScrollView>
 
     <HorizontalScrollView
         android:layout_width="match_parent"
@@ -131,6 +150,6 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="230dp" />
+        android:layout_height="220dp" />
 
 </LinearLayout>
